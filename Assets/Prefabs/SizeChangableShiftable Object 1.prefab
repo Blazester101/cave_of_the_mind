@@ -191,8 +191,8 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: b16affe861f9f2649a049cca8df02d8f, type: 2}
   - {fileID: 2100000, guid: b5cfe6ce04903594e8c4dae770ae16ea, type: 2}
-  - {fileID: 2100000, guid: 7ab977a21c92388468ee65ad1c0e5a78, type: 2}
-  - {fileID: 2100000, guid: 7ab977a21c92388468ee65ad1c0e5a78, type: 2}
+  - {fileID: 2100000, guid: 06d63c0ac605c904cbed0a0144bad412, type: 2}
+  - {fileID: 2100000, guid: 12d34de5a41fb914a8244812bd3ca9dd, type: 2}
 --- !u!114 &2556861130600257191
 MonoBehaviour:
   m_ObjectHideFlags: 0
