@@ -8,6 +8,7 @@ TagManager:
   - Interactable
   - Door
   - Button
+  - Terrain
   layers:
   - Default
   - TransparentFX
