@@ -15,6 +15,8 @@ public class CasinoCamera : MonoBehaviour
             Rigidbody rg = _casinoCameraBody.GetComponent<Rigidbody>();
             rg.useGravity = true; //Causes object to drop from where it was.
 
+            rg.constraints = RigidbodyConstraints.None; //Camera starts frozen, this releases the rotation and position
+
             Destroy(_casinoSpotLight); //Light shows where player can't go. Could be fun to let player run around with a giant flashlight, but no.
 
             Destroy(_casinoOutOfBounds); //Destroys out of bounds so player can progress without issue.
