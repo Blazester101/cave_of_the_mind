@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 108761439129898609}
   - component: {fileID: 8290294771646709390}
   - component: {fileID: 2556861130600257191}
+  - component: {fileID: 5949543648981750438}
   m_Layer: 0
   m_Name: SizeChangableShiftable Object 1
   m_TagString: Interactable
@@ -209,3 +210,16 @@ MonoBehaviour:
   decreaseSizeMultiplier: 0.8
   maxScale: 2
   minScale: 0.5
+--- !u!114 &5949543648981750438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3555120069301162606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a0fc3c3d4ab9ca4c9863d2e8fe1c053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startlocation: {x: 0, y: 0, z: 0}
