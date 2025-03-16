@@ -6,7 +6,7 @@ public class CollisionSFX : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Terrain") //requires 'Terrain' to trigger. Snap Kit will need to be updated if it hasn't already.
+        if (collision.gameObject.tag == "Terrain" || collision.gameObject.tag == "Interactable") //requires 'Terrain' to trigger. Snap Kit will need to be updated if it hasn't already.
         {
             playsound.Play();
         }

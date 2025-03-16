@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Convex_corner_in
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5dde267bc088b7e4392949fde07cc9b2, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
