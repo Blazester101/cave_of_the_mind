@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3901343266000681089}
   serializedVersion: 2
   m_LocalRotation: {x: 0.13052739, y: -0, z: -0, w: 0.9914447}
-  m_LocalPosition: {x: 0, y: -0.3333333, z: 0.57}
+  m_LocalPosition: {x: 0, y: -0.3333333, z: 0.6666666}
   m_LocalScale: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -576,6 +576,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ff98a51a412c95043b49cdb1936c810b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3161ec98cd794df49998e7f3f2e04540, type: 2}
     - target: {fileID: 919132149155446097, guid: ff98a51a412c95043b49cdb1936c810b, type: 3}
       propertyPath: m_Name
       value: camera_arm
@@ -654,6 +658,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 42c0da9445af19746b45a29440f031b9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cd7938f5a7f28da41a80a3603446cc59, type: 2}
     - target: {fileID: 919132149155446097, guid: 42c0da9445af19746b45a29440f031b9, type: 3}
       propertyPath: m_Name
       value: CasinoCameraBody
