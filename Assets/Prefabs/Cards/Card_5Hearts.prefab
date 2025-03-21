@@ -52,9 +52,13 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: bc6dde7132fb80344a8048a3c613c8ae, type: 2}
+    - target: {fileID: -5754084199372789682, guid: 502a398aa0aadba49899190e365a8339, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2548323895237073491, guid: 609b04d7f8bde074094334e2f6003107, type: 3}
     - target: {fileID: 919132149155446097, guid: 502a398aa0aadba49899190e365a8339, type: 3}
       propertyPath: m_Name
-      value: M_Card (3)
+      value: Card_5Hearts
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
