@@ -14,7 +14,7 @@ public class Door : MonoBehaviour, IInteractable, ITriggeredByButton
     public bool areButtonsRequired = false;
     public int numButtonsRequired = 1;
     private int numButtonsPressed = 0;
-    private bool isOpen;
+    public bool isOpen;
     private float maxInteractionDistance = 5;
     private Outline outlineEffect;
     private bool canBeInteractedWith = false;
