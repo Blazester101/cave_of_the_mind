@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 
 //Did not manage to figure this out in time, needs to be done later.
@@ -10,40 +11,61 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pause;
+   
+
+    public static bool GameIsPaused = false;
+
+    public GameObject PauseMenuUI;
 
 
-
-    bool isPaused;
-
-    public void RestartGame()
+    void Update()
     {
-        // Get the current active scene
-        Scene currentScene = SceneManager.GetActiveScene();
+        //Debug code here
+        if (PauseMenuUI == null)
+        {
+            print("No Pause Menu Game Object Assigned.");
+        }
 
-        // Reload the current scene
-        SceneManager.LoadScene(currentScene.buildIndex);
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
 
-        // Reset the mouse cursor state
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-}
+       
+    }
 
+    public void Resume()
+    {
+        PauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = true;
+
+    }
+
+
+    void Pause() { 
+        PauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;    
+    }
+
+    public void LoadMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Main Menu");
+    }
 
     public void QuitGame() { 
         Application.Quit();
     }
 
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            isPaused = !isPaused;
-            Time.timeScale = isPaused ? 0 : 1;
-            Cursor.visible = isPaused ? true : false;
-		    pause.SetActive(isPaused);
-
-        }
-    }
+  
+   
 }
