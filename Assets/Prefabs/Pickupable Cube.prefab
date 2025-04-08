@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2537077441873226613}
   - component: {fileID: 7797158364761631320}
   - component: {fileID: -96397634861525700}
+  - component: {fileID: -5153071974727219771}
   m_Layer: 0
   m_Name: Pickupable Cube
   m_TagString: Untagged
@@ -248,3 +249,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-5153071974727219771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479798781977669866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae3395a62b96264481fe57545cc2239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectShape: 1

@@ -14,7 +14,8 @@ public class ShiftableObject : MonoBehaviour
     public Mesh sphereMesh;
     public Mesh tetrahedronMesh;
 
-    public ObjectType startingType;
+    public ObjectShape startingType;
+    public ObjectShape currentType;
 
     public Material[] materials;
 
@@ -37,35 +38,35 @@ public class ShiftableObject : MonoBehaviour
     {
         if (pickupableObjectComponent != null && pickupableObjectComponent.isPickedUp)
         {
-            if (Input.GetKeyDown(obj1Key)) changeObjectTo(ObjectType.Cube);
-            if (Input.GetKeyDown(obj2Key)) changeObjectTo(ObjectType.Sphere);
-            if (Input.GetKeyDown(obj3Key)) changeObjectTo(ObjectType.Tetrahedron);
+            if (Input.GetKeyDown(obj1Key)) changeObjectTo(ObjectShape.Cube);
+            if (Input.GetKeyDown(obj2Key)) changeObjectTo(ObjectShape.Sphere);
+            if (Input.GetKeyDown(obj3Key)) changeObjectTo(ObjectShape.Tetrahedron);
         }
     }
 
-    void changeObjectTo(ObjectType type)
+    void changeObjectTo(ObjectShape type)
     {
         switch (type)
         {
-            case ObjectType.Core:
+            case ObjectShape.Core:
                 GetComponent<MeshFilter>().mesh = coreMesh;
                 Destroy(GetComponent<Collider>());
                 gameObject.AddComponent<BoxCollider>();
                 rendererComponent.material = materials[0];
                 break;
-            case ObjectType.Cube:
+            case ObjectShape.Cube:
                 GetComponent<MeshFilter>().mesh = cubeMesh;
                 Destroy(GetComponent<Collider>());
                 gameObject.AddComponent<BoxCollider>();
                 rendererComponent.material = materials[1];
                 break;
-            case ObjectType.Sphere:
+            case ObjectShape.Sphere:
                 GetComponent<MeshFilter>().mesh = sphereMesh;
                 Destroy(GetComponent<Collider>());
                 gameObject.AddComponent<SphereCollider>();
                 rendererComponent.material = materials[2];
                 break;
-            case ObjectType.Tetrahedron:
+            case ObjectShape.Tetrahedron:
                 GetComponent<MeshFilter>().mesh = tetrahedronMesh;
                 Destroy(GetComponent<Collider>());
                 MeshCollider col = gameObject.AddComponent<MeshCollider>();
@@ -75,11 +76,13 @@ public class ShiftableObject : MonoBehaviour
                 rendererComponent.material = materials[3];
                 break;
         }
+
+        currentType = type;
     }
 }
 
 //enum for object Types
-public enum ObjectType
+public enum ObjectShape
 {
     Core = 0,
     Cube = 1,
