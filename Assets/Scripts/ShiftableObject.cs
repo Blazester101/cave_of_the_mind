@@ -7,7 +7,10 @@ public class ShiftableObject : MonoBehaviour
     public static KeyCode obj1Key = KeyCode.Alpha1;
     public static KeyCode obj2Key = KeyCode.Alpha2;
     public static KeyCode obj3Key = KeyCode.Alpha3;
-    public static KeyCode obj4Key = KeyCode.Alpha4;
+
+    public ObjectShape key1ObjectType = ObjectShape.Cube;
+    public ObjectShape key2ObjectType = ObjectShape.Sphere;
+    public ObjectShape key3ObjectType = ObjectShape.Tetrahedron;
 
     public Mesh coreMesh;
     public Mesh cubeMesh;
@@ -38,14 +41,15 @@ public class ShiftableObject : MonoBehaviour
     {
         if (pickupableObjectComponent != null && pickupableObjectComponent.isPickedUp)
         {
-            if (Input.GetKeyDown(obj1Key)) changeObjectTo(ObjectShape.Cube);
-            if (Input.GetKeyDown(obj2Key)) changeObjectTo(ObjectShape.Sphere);
-            if (Input.GetKeyDown(obj3Key)) changeObjectTo(ObjectShape.Tetrahedron);
+            if (Input.GetKeyDown(obj1Key)) changeObjectTo(key1ObjectType);
+            if (Input.GetKeyDown(obj2Key)) changeObjectTo(key2ObjectType);
+            if (Input.GetKeyDown(obj3Key)) changeObjectTo(key3ObjectType);
         }
     }
 
     void changeObjectTo(ObjectShape type)
     {
+        bool isValidShape = true;
         switch (type)
         {
             case ObjectShape.Core:
@@ -75,9 +79,13 @@ public class ShiftableObject : MonoBehaviour
                 col.enabled = true;
                 rendererComponent.material = materials[3];
                 break;
+            default:
+                Debug.LogError("Invalid object type: " + type);
+                isValidShape = false;
+                break;
         }
 
-        currentType = type;
+        if(isValidShape) currentType = type;
     }
 }
 
