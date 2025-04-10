@@ -6850,7 +6850,6 @@ GameObject:
   - component: {fileID: 1901227385}
   - component: {fileID: 1901227384}
   - component: {fileID: 1901227383}
-  - component: {fileID: 1901227387}
   m_Layer: 0
   m_Name: Surfboard
   m_TagString: Untagged
@@ -6947,19 +6946,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 185573040}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1901227387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1901227380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf27fff940103194db2255c5300ac393, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPickedUp: 0
 --- !u!4 &1908073281 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 930296823261386049, guid: 655c5bd2f6551e8479aaa07eb7fea826, type: 3}
