@@ -45,7 +45,6 @@ public class MovableObject : MonoBehaviour, IInteractable
         lastPoint = transform.position;
 
         objectsOnPlatform = new List<GameObject>();
-        objectsOnPlatformParents = new List<Transform>();
         jointsOnPlatform = new List<FixedJoint>();
 
         playerDetectionTrigger.enterEvent += playerDetected;
@@ -167,7 +166,6 @@ public class MovableObject : MonoBehaviour, IInteractable
         if (obj.GetComponent<Rigidbody>() != null && obj != gameObject)
         {
             objectsOnPlatform.Add(obj);
-            objectsOnPlatformParents.Add(obj.transform.parent);
         }
 
         ////this causes very buggy behavior when the platform is pushed through an object below it
@@ -184,9 +182,7 @@ public class MovableObject : MonoBehaviour, IInteractable
 
     void objectOffPlatform(GameObject obj)
     {
-        int i = objectsOnPlatform.IndexOf(obj);
-        objectsOnPlatformParents.RemoveAt(i);
-        objectsOnPlatform.RemoveAt(i);
+        objectsOnPlatform.Remove(obj);
     }
 
     void OnCollisionEnter(Collision c)
@@ -214,14 +210,12 @@ public class MovableObject : MonoBehaviour, IInteractable
             joint.connectedBody = obj.GetComponent<Rigidbody>();
             joint.enableCollision= true;
             jointsOnPlatform.Add(joint);
-            obj.transform.parent = transform;
         }
     }
 
     void dropObject()
     {
         foreach (FixedJoint joint in jointsOnPlatform) Destroy(joint);
-        for (int i = 0; i < objectsOnPlatform.Count; i++) objectsOnPlatform[i].transform.parent = null; // if we set this to the associated object on platformParent item, it might get reset to the hand
         jointsOnPlatform.Clear();
         //foreach (GameObject obj in objectsOnPlatform) obj.transform.position = obj.transform.position + Vector3.up * .1f;
 
@@ -231,6 +225,20 @@ public class MovableObject : MonoBehaviour, IInteractable
         interactResponse(new InteractResponseEventArgs(gameObject, true));
         interactor = null;
         interactResponse = null;
+    }
+
+    public float getCurrentLerpPosition()
+    {
+        float currentLerpPosition = Vector3.Dot(movementAxis, transform.position - point1) / Vector3.Dot(movementAxis, point2 - point1); // auto-suggested, possibly broken
+        return currentLerpPosition;
+    }
+
+    public void setCurrentLerpPosition(float newLerpPosition)
+    {
+        if (isPickedUp) return;
+
+        transform.position = Vector3.Lerp(point1, point2, newLerpPosition);
+        lastPoint = transform.position;
     }
 
     public void onInteract(InteractEventArgs args)
