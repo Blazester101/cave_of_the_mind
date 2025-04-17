@@ -139,7 +139,8 @@ public class ShiftableObject : MonoBehaviour
                 break;
         }
 
-        objectChangedEvent.Invoke();
+        PlayVFXScript.unityTriggerVFX.Invoke(transform);
+
 
         if (isValidShape) currentType = type;
     }
