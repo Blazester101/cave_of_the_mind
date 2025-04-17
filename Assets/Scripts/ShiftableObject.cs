@@ -16,6 +16,10 @@ public class ShiftableObject : MonoBehaviour
     public Mesh cubeMesh;
     public Mesh sphereMesh;
     public Mesh tetrahedronMesh;
+    public Mesh coinMesh;
+    public Mesh sevenMesh;
+    public Mesh cherriesMesh;
+    public Mesh diamondMesh;
 
     public ObjectShape startingType;
     public ObjectShape currentType;
@@ -71,13 +75,59 @@ public class ShiftableObject : MonoBehaviour
                 rendererComponent.material = materials[2];
                 break;
             case ObjectShape.Tetrahedron:
-                GetComponent<MeshFilter>().mesh = tetrahedronMesh;
-                Destroy(GetComponent<Collider>());
-                MeshCollider col = gameObject.AddComponent<MeshCollider>();
-                col.sharedMesh = tetrahedronMesh;
-                col.convex = true;
-                col.enabled = true;
-                rendererComponent.material = materials[3];
+                {
+                    GetComponent<MeshFilter>().mesh = tetrahedronMesh;
+                    Destroy(GetComponent<Collider>());
+                    MeshCollider col = gameObject.AddComponent<MeshCollider>();
+                    col.sharedMesh = tetrahedronMesh;
+                    col.convex = true;
+                    col.enabled = true;
+                    rendererComponent.material = materials[3];
+                }
+                break;
+            case ObjectShape.Coin:
+                {
+                    GetComponent<MeshFilter>().mesh = coinMesh;
+                    Destroy(GetComponent<Collider>());
+                    MeshCollider col = gameObject.AddComponent<MeshCollider>();
+                    col.sharedMesh = coinMesh;
+                    col.convex = true;
+                    col.enabled = true;
+                    rendererComponent.material = materials[4];
+                }
+                break;
+            case ObjectShape.Seven:
+                {
+                    GetComponent<MeshFilter>().mesh = sevenMesh;
+                    Destroy(GetComponent<Collider>());
+                    MeshCollider col = gameObject.AddComponent<MeshCollider>();
+                    col.sharedMesh = sevenMesh;
+                    col.convex = true;
+                    col.enabled = true;
+                    rendererComponent.material = materials[5];
+                }
+                break;
+            case ObjectShape.Cherries:
+                {
+                    GetComponent<MeshFilter>().mesh = cherriesMesh;
+                    Destroy(GetComponent<Collider>());
+                    MeshCollider col = gameObject.AddComponent<MeshCollider>();
+                    col.sharedMesh = cherriesMesh;
+                    col.convex = true;
+                    col.enabled = true;
+                    rendererComponent.material = materials[6];
+                }
+                break;
+            case ObjectShape.Diamond:
+                {
+                    GetComponent<MeshFilter>().mesh = diamondMesh;
+                    Destroy(GetComponent<Collider>());
+                    MeshCollider col = gameObject.AddComponent<MeshCollider>();
+                    col.sharedMesh = diamondMesh;
+                    col.convex = true;
+                    col.enabled = true;
+                    rendererComponent.material = materials[7];
+                }
                 break;
             default:
                 Debug.LogError("Invalid object type: " + type);
@@ -85,7 +135,14 @@ public class ShiftableObject : MonoBehaviour
                 break;
         }
 
+        PlayEffect();
+
         if(isValidShape) currentType = type;
+    }
+
+    public void PlayEffect()
+    {
+        //TODO
     }
 }
 
@@ -95,5 +152,9 @@ public enum ObjectShape
     Core = 0,
     Cube = 1,
     Sphere = 2,
-    Tetrahedron = 3
+    Tetrahedron = 3,
+    Coin = 4,
+    Seven = 5,
+    Cherries = 6,
+    Diamond = 7
 }
