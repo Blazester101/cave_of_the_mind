@@ -1,9 +1,11 @@
 //using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ShiftableObject : MonoBehaviour
 {
+    public static UnityEvent objectChangedEvent = new UnityEvent();
     public static KeyCode obj1Key = KeyCode.Alpha1;
     public static KeyCode obj2Key = KeyCode.Alpha2;
     public static KeyCode obj3Key = KeyCode.Alpha3;
@@ -38,6 +40,8 @@ public class ShiftableObject : MonoBehaviour
         if(pickupableObjectComponent == null) throw new System.Exception("Object is not a pickupableObject:" + gameObject);
 
         changeObjectTo(startingType);
+
+        transform.position = transform.position + new Vector3(0, -10f, 0);
     }
 
     // Update is called once per frame
@@ -135,14 +139,9 @@ public class ShiftableObject : MonoBehaviour
                 break;
         }
 
-        PlayEffect();
+        objectChangedEvent.Invoke();
 
-        if(isValidShape) currentType = type;
-    }
-
-    public void PlayEffect()
-    {
-        //TODO
+        if (isValidShape) currentType = type;
     }
 }
 
@@ -158,3 +157,7 @@ public enum ObjectShape
     Cherries = 6,
     Diamond = 7
 }
+
+
+
+
