@@ -3839,6 +3839,7 @@ MonoBehaviour:
   _casinoCameraBody: {fileID: 1348633902}
   _casinoSpotLight: {fileID: 779879085}
   _casinoOutOfBounds: {fileID: 347667597}
+  particleSystem: {fileID: 0}
 --- !u!4 &850140789 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1154444802925597211, guid: 845de59aa123eef45bb9ef7fcfab6b05, type: 3}
