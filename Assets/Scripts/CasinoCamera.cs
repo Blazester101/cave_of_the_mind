@@ -7,6 +7,15 @@ public class CasinoCamera : MonoBehaviour
     public GameObject _casinoCameraBody;
     public GameObject _casinoSpotLight;
     public GameObject _casinoOutOfBounds;
+
+    //To play particle system animation.
+
+    //Reference to an existing particle prefab
+    [SerializeField] private ParticleSystem particleSystem;
+
+    //References each particle system instance spawned into a scene
+    private ParticleSystem particleSystemInstance;
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Camera Break");
@@ -14,6 +23,8 @@ public class CasinoCamera : MonoBehaviour
         {
             Rigidbody rg = _casinoCameraBody.GetComponent<Rigidbody>();
             rg.useGravity = true; //Causes object to drop from where it was.
+
+            //Insert line to spawn particle effect
 
             rg.constraints = RigidbodyConstraints.None; //Camera starts frozen, this releases the rotation and position
 
@@ -25,5 +36,12 @@ public class CasinoCamera : MonoBehaviour
         }
 
     }
+
+    private void SpawnSparkParticles() { 
+        particleSystemInstance = Instantiate(particleSystem, transform.position, Quaternion.identity);
+    }
+
+    //Potentially create update function for timer.
+
 }
 
