@@ -25,6 +25,7 @@ public class CasinoCamera : MonoBehaviour
             rg.useGravity = true; //Causes object to drop from where it was.
 
             //Insert line to spawn particle effect
+            SpawnSparkParticles();
 
             rg.constraints = RigidbodyConstraints.None; //Camera starts frozen, this releases the rotation and position
 
@@ -38,7 +39,7 @@ public class CasinoCamera : MonoBehaviour
     }
 
     private void SpawnSparkParticles() { 
-        particleSystemInstance = Instantiate(particleSystem, transform.position, Quaternion.identity);
+        particleSystemInstance = Instantiate(particleSystem, (transform.position + new Vector3(0, -3, 0)), Quaternion.identity);
     }
 
     //Potentially create update function for timer.
