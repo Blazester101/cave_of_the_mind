@@ -40,8 +40,6 @@ public class ShiftableObject : MonoBehaviour
         if(pickupableObjectComponent == null) throw new System.Exception("Object is not a pickupableObject:" + gameObject);
 
         changeObjectTo(startingType);
-
-        transform.position = transform.position + new Vector3(0, -10f, 0);
     }
 
     // Update is called once per frame
