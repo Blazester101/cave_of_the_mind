@@ -32,6 +32,14 @@ public class ShiftableObject : MonoBehaviour
     Renderer rendererComponent;
     Outline outlineComponent;
 
+    //To play particle system animation.
+
+    //Reference to an existing particle prefab
+    [SerializeField] private ParticleSystem particleSystem;
+
+    //References each particle system instance spawned into a scene
+    private ParticleSystem particleSystemInstance;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -69,12 +77,16 @@ public class ShiftableObject : MonoBehaviour
                 Destroy(GetComponent<Collider>());
                 gameObject.AddComponent<BoxCollider>();
                 rendererComponent.material = materials[1];
+                //Spawn particle effect
+                SpawnParticleEffect();
                 break;
             case ObjectShape.Sphere:
                 GetComponent<MeshFilter>().mesh = sphereMesh;
                 Destroy(GetComponent<Collider>());
                 gameObject.AddComponent<SphereCollider>();
                 rendererComponent.material = materials[2];
+                //Spawn particle effect
+                SpawnParticleEffect();
                 break;
             case ObjectShape.Tetrahedron:
                 {
@@ -86,6 +98,8 @@ public class ShiftableObject : MonoBehaviour
                     col.enabled = true;
                     rendererComponent.material = materials[3];
                 }
+                //Spawn particle effect
+                SpawnParticleEffect();
                 break;
             case ObjectShape.Coin:
                 {
@@ -136,11 +150,16 @@ public class ShiftableObject : MonoBehaviour
                 isValidShape = false;
                 break;
         }
-
-        PlayVFXScript.unityTriggerVFX.Invoke(transform);
+        //Play sound effect
+        
+        //PlayVFXScript.unityTriggerVFX.Invoke(transform);
 
 
         if (isValidShape) currentType = type;
+    }
+
+    private void SpawnParticleEffect() {
+        particleSystemInstance = Instantiate(particleSystem, (transform.position + new Vector3(0, -3, 0)), Quaternion.identity);
     }
 }
 
