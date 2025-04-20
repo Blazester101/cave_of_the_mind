@@ -1,9 +1,11 @@
 //using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ShiftableObject : MonoBehaviour
 {
+    public static UnityEvent objectChangedEvent = new UnityEvent();
     public static KeyCode obj1Key = KeyCode.Alpha1;
     public static KeyCode obj2Key = KeyCode.Alpha2;
     public static KeyCode obj3Key = KeyCode.Alpha3;
@@ -16,6 +18,10 @@ public class ShiftableObject : MonoBehaviour
     public Mesh cubeMesh;
     public Mesh sphereMesh;
     public Mesh tetrahedronMesh;
+    public Mesh coinMesh;
+    public Mesh sevenMesh;
+    public Mesh cherriesMesh;
+    public Mesh diamondMesh;
 
     public ObjectShape startingType;
     public ObjectShape currentType;
@@ -25,6 +31,14 @@ public class ShiftableObject : MonoBehaviour
     PickupableObject pickupableObjectComponent;
     Renderer rendererComponent;
     Outline outlineComponent;
+
+    //To play particle system animation.
+
+    //Reference to an existing particle prefab
+    [SerializeField] private ParticleSystem particleSystem;
+
+    //References each particle system instance spawned into a scene
+    private ParticleSystem particleSystemInstance;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -63,29 +77,89 @@ public class ShiftableObject : MonoBehaviour
                 Destroy(GetComponent<Collider>());
                 gameObject.AddComponent<BoxCollider>();
                 rendererComponent.material = materials[1];
+                //Spawn particle effect
+                SpawnParticleEffect();
                 break;
             case ObjectShape.Sphere:
                 GetComponent<MeshFilter>().mesh = sphereMesh;
                 Destroy(GetComponent<Collider>());
                 gameObject.AddComponent<SphereCollider>();
                 rendererComponent.material = materials[2];
+                //Spawn particle effect
+                SpawnParticleEffect();
                 break;
             case ObjectShape.Tetrahedron:
-                GetComponent<MeshFilter>().mesh = tetrahedronMesh;
-                Destroy(GetComponent<Collider>());
-                MeshCollider col = gameObject.AddComponent<MeshCollider>();
-                col.sharedMesh = tetrahedronMesh;
-                col.convex = true;
-                col.enabled = true;
-                rendererComponent.material = materials[3];
+                {
+                    GetComponent<MeshFilter>().mesh = tetrahedronMesh;
+                    Destroy(GetComponent<Collider>());
+                    MeshCollider col = gameObject.AddComponent<MeshCollider>();
+                    col.sharedMesh = tetrahedronMesh;
+                    col.convex = true;
+                    col.enabled = true;
+                    rendererComponent.material = materials[3];
+                }
+                //Spawn particle effect
+                SpawnParticleEffect();
+                break;
+            case ObjectShape.Coin:
+                {
+                    GetComponent<MeshFilter>().mesh = coinMesh;
+                    Destroy(GetComponent<Collider>());
+                    MeshCollider col = gameObject.AddComponent<MeshCollider>();
+                    col.sharedMesh = coinMesh;
+                    col.convex = true;
+                    col.enabled = true;
+                    rendererComponent.material = materials[4];
+                }
+                break;
+            case ObjectShape.Seven:
+                {
+                    GetComponent<MeshFilter>().mesh = sevenMesh;
+                    Destroy(GetComponent<Collider>());
+                    MeshCollider col = gameObject.AddComponent<MeshCollider>();
+                    col.sharedMesh = sevenMesh;
+                    col.convex = true;
+                    col.enabled = true;
+                    rendererComponent.material = materials[5];
+                }
+                break;
+            case ObjectShape.Cherries:
+                {
+                    GetComponent<MeshFilter>().mesh = cherriesMesh;
+                    Destroy(GetComponent<Collider>());
+                    MeshCollider col = gameObject.AddComponent<MeshCollider>();
+                    col.sharedMesh = cherriesMesh;
+                    col.convex = true;
+                    col.enabled = true;
+                    rendererComponent.material = materials[6];
+                }
+                break;
+            case ObjectShape.Diamond:
+                {
+                    GetComponent<MeshFilter>().mesh = diamondMesh;
+                    Destroy(GetComponent<Collider>());
+                    MeshCollider col = gameObject.AddComponent<MeshCollider>();
+                    col.sharedMesh = diamondMesh;
+                    col.convex = true;
+                    col.enabled = true;
+                    rendererComponent.material = materials[7];
+                }
                 break;
             default:
                 Debug.LogError("Invalid object type: " + type);
                 isValidShape = false;
                 break;
         }
+        //Play sound effect
+        
+        //PlayVFXScript.unityTriggerVFX.Invoke(transform);
 
-        if(isValidShape) currentType = type;
+
+        if (isValidShape) currentType = type;
+    }
+
+    private void SpawnParticleEffect() {
+        particleSystemInstance = Instantiate(particleSystem, (transform.position + new Vector3(0, -3, 0)), Quaternion.identity);
     }
 }
 
@@ -95,5 +169,13 @@ public enum ObjectShape
     Core = 0,
     Cube = 1,
     Sphere = 2,
-    Tetrahedron = 3
+    Tetrahedron = 3,
+    Coin = 4,
+    Seven = 5,
+    Cherries = 6,
+    Diamond = 7
 }
+
+
+
+
