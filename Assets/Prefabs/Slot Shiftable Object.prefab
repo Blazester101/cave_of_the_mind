@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 3988799576176101083}
   - component: {fileID: -3469218521290058937}
   m_Layer: 0
-  m_Name: Shiftable Object
+  m_Name: Slot Shiftable Object
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,7 +49,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3555120069301162606}
-  m_Mesh: {fileID: 6166920122180908745, guid: 3472523af9ff72449be62620def8e947, type: 3}
+  m_Mesh: {fileID: 2296938638625625543, guid: b30850d035023db4b8d6b088e145bc90, type: 3}
 --- !u!23 &2678759039404172898
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -73,7 +73,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b16affe861f9f2649a049cca8df02d8f, type: 2}
+  - {fileID: 2100000, guid: 019904ea8d299a74da26da577ee1610b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -114,7 +114,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.9, y: 0.15, z: 0.9}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &4482671896771848581
 Rigidbody:
@@ -186,9 +186,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eda6ef00b60b75c429ac7af0c9d2d996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key1ObjectType: 1
-  key2ObjectType: 2
-  key3ObjectType: 3
+  key1ObjectType: 5
+  key2ObjectType: 6
+  key3ObjectType: 7
   coreMesh: {fileID: 6166920122180908745, guid: 3472523af9ff72449be62620def8e947, type: 3}
   cubeMesh: {fileID: -7759331768739107841, guid: 8b81496dc3fe9cf4c8a795e152ed6446, type: 3}
   sphereMesh: {fileID: 5663087941215493229, guid: 086b815d8a2137c46a2e34e35bc15703, type: 3}
@@ -197,8 +197,8 @@ MonoBehaviour:
   sevenMesh: {fileID: -4474957925920691972, guid: ae02087362394b14bb43ed64acb6980c, type: 3}
   cherriesMesh: {fileID: -3867121736085922916, guid: 767c23b0fed2c4e448ef14abe99d5ad5, type: 3}
   diamondMesh: {fileID: -1074578793403510824, guid: bcf69555c769e874b948d460426cec85, type: 3}
-  startingType: 0
-  currentType: 0
+  startingType: 4
+  currentType: 4
   materials:
   - {fileID: 2100000, guid: b16affe861f9f2649a049cca8df02d8f, type: 2}
   - {fileID: 2100000, guid: b5cfe6ce04903594e8c4dae770ae16ea, type: 2}
