@@ -15,6 +15,10 @@ public class MainMenu : MonoBehaviour
         Cursor.visible = false;
     }
 
+    public void CreditsScreen() { 
+        
+    }
+
     public void QuitGame() { 
         Application.Quit();
     }
