@@ -19,7 +19,7 @@ public class MovableObject : MonoBehaviour, IInteractable
     private GameObject interactor;
     public PlayerDetectionTrigger playerDetectionTrigger;
     public ObjectDetectionTrigger objectDetectionTrigger;
-    private bool isPlayerStandingOnPlatform = false;
+    public bool isPlayerStandingOnPlatform = false;
     private bool currentlyInCollision = false;
 
     private Vector3 movementAxis; //this normalized vector points towards point2 from point1
@@ -34,7 +34,7 @@ public class MovableObject : MonoBehaviour, IInteractable
     private Interact.InteractResponse interactResponse;
 
     private Outline outlineEffect;
-    private bool canBeInteractedWith = false;
+    public bool canBeInteractedWith = false;
 
     void Start()
     {
@@ -150,13 +150,13 @@ public class MovableObject : MonoBehaviour, IInteractable
         
 
     }
-    void playerDetected()
+    public void playerDetected()
     {
         isPlayerStandingOnPlatform = true;
         if (isPickedUp) dropObject();
     }
 
-    void playerNotDetected()
+    public void playerNotDetected()
     {
         isPlayerStandingOnPlatform = false;
     }

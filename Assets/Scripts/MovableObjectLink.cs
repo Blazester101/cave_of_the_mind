@@ -9,11 +9,20 @@ public class MovableObjectLink : MonoBehaviour
     public bool reverseDirection = false;
     public MovableObject pickedUpObject = null;
 
+    private void Start()
+    {
+        foreach (MovableObject obj in linkedObjects)
+        {
+            obj.playerDetectionTrigger.enterEvent += PlayerOnAnyPlatform;
+            obj.playerDetectionTrigger.exitEvent += PlayerOffAnyPlatform;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
         //check if an object is picked up
-        foreach(MovableObject obj in linkedObjects)
+        foreach (MovableObject obj in linkedObjects)
         {
             if (obj.isPickedUp)
             {
@@ -34,6 +43,24 @@ public class MovableObjectLink : MonoBehaviour
                     else obj.setCurrentLerpPosition(1 - pickedUpObject.getCurrentLerpPosition()); //reverse the lerp position
                 }
             }
+        }
+    }
+
+    void PlayerOnAnyPlatform()
+    {
+        //apply player check result to all platforms
+        foreach (MovableObject obj in linkedObjects)
+        {
+            obj.playerDetected();
+        }
+    }
+
+    void PlayerOffAnyPlatform()
+    {
+        //apply player check result to all platforms
+        foreach (MovableObject obj in linkedObjects)
+        {
+            obj.playerNotDetected();
         }
     }
 }
