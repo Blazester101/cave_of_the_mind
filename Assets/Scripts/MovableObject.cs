@@ -34,7 +34,8 @@ public class MovableObject : MonoBehaviour, IInteractable
     private Interact.InteractResponse interactResponse;
 
     private Outline outlineEffect;
-    public bool canBeInteractedWith = false;
+    private bool canBeInteractedWith = false;
+    public bool isOutlined = false;
 
     void Start()
     {
@@ -92,8 +93,16 @@ public class MovableObject : MonoBehaviour, IInteractable
     {
         if (outlineEffect != null)
         {
-            if (canBeInteractedWith) outlineEffect.enabled = true;
-            else outlineEffect.enabled = false;
+            if (canBeInteractedWith)
+            {
+                outlineEffect.enabled = true;
+                isOutlined = true;
+            }
+            else
+            {
+                outlineEffect.enabled = false;
+                isOutlined = false;
+            }
             canBeInteractedWith = false;
         }
 
