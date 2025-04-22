@@ -15,8 +15,12 @@ public class MainMenu : MonoBehaviour
         Cursor.visible = false;
     }
 
-    public void CreditsScreen() { 
-        
+    public void CreditsScreen() {
+        SceneManager.LoadSceneAsync(2);
+    }
+
+    public void BackToMainMenu() {
+        SceneManager.LoadSceneAsync(0);
     }
 
     public void QuitGame() { 
