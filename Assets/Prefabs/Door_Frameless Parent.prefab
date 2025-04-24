@@ -98,7 +98,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5058969533260449816, guid: 2e8d685fafe11a343867c51836f03829, type: 3}
+  - {fileID: 2100000, guid: 73d5183ab58dd7e488a1508fa28a1ab1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -315,6 +315,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ef338df0c35aa1d4b839456b5d1b6935, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e7aa205910d801246bf013a3fa1e087e, type: 2}
     - target: {fileID: 919132149155446097, guid: ef338df0c35aa1d4b839456b5d1b6935, type: 3}
       propertyPath: m_Name
       value: door_frame
