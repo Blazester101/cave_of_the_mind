@@ -11,7 +11,7 @@ using static UnityEngine.Rendering.GPUSort;
 /// </summary>
 public class MovableObject : MonoBehaviour, IInteractable
 {
-    private float maxInteractionDistance = 15;
+    private float maxInteractionDistance = 7;
     public Vector3 point1;
     public Vector3 point2;
     public float startLerpPosition; //fraction along the path point1 -> point2 to start.  For example, 0 is at point 1, 1 is at point 2, and 0.5 is the midpoint between them
