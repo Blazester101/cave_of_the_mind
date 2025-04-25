@@ -77,16 +77,12 @@ public class ShiftableObject : MonoBehaviour
                 Destroy(GetComponent<Collider>());
                 gameObject.AddComponent<BoxCollider>();
                 rendererComponent.material = materials[1];
-                //Spawn particle effect
-                SpawnParticleEffect();
                 break;
             case ObjectShape.Sphere:
                 GetComponent<MeshFilter>().mesh = sphereMesh;
                 Destroy(GetComponent<Collider>());
                 gameObject.AddComponent<SphereCollider>();
                 rendererComponent.material = materials[2];
-                //Spawn particle effect
-                SpawnParticleEffect();
                 break;
             case ObjectShape.Tetrahedron:
                 {
@@ -98,8 +94,6 @@ public class ShiftableObject : MonoBehaviour
                     col.enabled = true;
                     rendererComponent.material = materials[3];
                 }
-                //Spawn particle effect
-                SpawnParticleEffect();
                 break;
             case ObjectShape.Coin:
                 {
@@ -150,12 +144,11 @@ public class ShiftableObject : MonoBehaviour
                 isValidShape = false;
                 break;
         }
-        //Play sound effect
-        
-        //PlayVFXScript.unityTriggerVFX.Invoke(transform);
 
+        if (isValidShape) 
+            currentType = type;
 
-        if (isValidShape) currentType = type;
+        SpawnParticleEffect(); //TODO: make this only play if the new object type is different than the previous type
     }
 
     private void SpawnParticleEffect() {

@@ -15,6 +15,7 @@ public class Button : MonoBehaviour
     public delegate void ButtonReleased(GameObject button);
     public event ButtonReleased releasedEvent;
     public bool isPressed;
+    private bool isForcedPressed = false;
     private List<GameObject> pressers;
 
     private void Start()
@@ -33,13 +34,15 @@ public class Button : MonoBehaviour
 
     private void Update()
     {
+        if (isForcedPressed) return;
+
         if (pressers.Count > 0)
         {
             if (!isPressed)
             {
                 isPressed = true;
                 if (pressedEvent != null) pressedEvent(gameObject);
-                if(buttonAnim != null) animateButtonDown();
+                if (buttonAnim != null) animateButtonDown();
             }
         }
         else
@@ -48,9 +51,24 @@ public class Button : MonoBehaviour
             {
                 isPressed = false;
                 if (releasedEvent != null) releasedEvent(gameObject);
-                if (buttonAnim != null) animateButtonUp();
+                if (buttonAnim != null) animateButtonUp();            
             }
         }
+    }
+
+    public void Press()
+    {
+        isForcedPressed = true;
+        if (pressedEvent != null && !isPressed) pressedEvent(gameObject);
+        if (buttonAnim != null && !isPressed) animateButtonDown();
+        isPressed = true;
+    }
+    public void Release()
+    {
+        isForcedPressed = false;
+        //if (releasedEvent != null && isPressed) releasedEvent(gameObject);
+        //if (buttonAnim != null && isPressed) animateButtonUp();
+        //isPressed = false;
     }
 
     void buttonPressedby(GameObject obj)

@@ -3,6 +3,8 @@ using UnityEngine;
 public class ShapeDetectionTrigger : MonoBehaviour
 {
     public ObjectDetectionTrigger objectDetectionTrigger;
+    public bool pressButtonWhenCorrectShapeDetected = false;
+    public Button buttonToPress;
     public ObjectShape shapeToDetect;
     private bool shapeDetected = false;
     public bool correctShapeDetected = false;
@@ -36,9 +38,13 @@ public class ShapeDetectionTrigger : MonoBehaviour
         if (!shapeDetected || shapedObject == null)
         {
             correctShapeDetected = false;
+            if (pressButtonWhenCorrectShapeDetected) buttonToPress.Release();
             return;
         }
 
         correctShapeDetected = shapedObject.objectShape == shapeToDetect;
+
+        if (correctShapeDetected && pressButtonWhenCorrectShapeDetected) buttonToPress.Press();
+        else if (!correctShapeDetected && pressButtonWhenCorrectShapeDetected) buttonToPress.Release();
     }
 }
