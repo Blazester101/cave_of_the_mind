@@ -152,7 +152,7 @@ public class ShiftableObject : MonoBehaviour
     }
 
     private void SpawnParticleEffect() {
-        particleSystemInstance = Instantiate(particleSystem, (transform.position + new Vector3(0, -3, 0)), Quaternion.identity);
+        particleSystemInstance = Instantiate(particleSystem, (transform.position + new Vector3(0, 0, 0)), Quaternion.identity);
     }
 }
 

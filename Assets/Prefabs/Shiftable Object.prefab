@@ -208,7 +208,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 019904ea8d299a74da26da577ee1610b, type: 2}
   - {fileID: 2100000, guid: 019904ea8d299a74da26da577ee1610b, type: 2}
   - {fileID: 2100000, guid: 019904ea8d299a74da26da577ee1610b, type: 2}
-  particleSystem: {fileID: 0}
+  particleSystem: {fileID: 198279101275435388, guid: 9e03786a9517b604d8e930182607a128, type: 3}
 --- !u!114 &-5316443069604460931
 MonoBehaviour:
   m_ObjectHideFlags: 0
