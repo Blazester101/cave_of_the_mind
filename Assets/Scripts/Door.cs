@@ -18,6 +18,7 @@ public class Door : MonoBehaviour, IInteractable, ITriggeredByButton
     private float maxInteractionDistance = 5;
     private Outline outlineEffect;
     private bool canBeInteractedWith = false;
+    public AudioSource playsound;
 
     void Start()
     {
@@ -55,6 +56,7 @@ public class Door : MonoBehaviour, IInteractable, ITriggeredByButton
         doorAnim.ResetTrigger("Close");
         doorAnim.SetTrigger("Open");
         isOpen = true;
+        playsound.Play();
     }
 
     void closeDoor()
@@ -64,6 +66,7 @@ public class Door : MonoBehaviour, IInteractable, ITriggeredByButton
         doorAnim.ResetTrigger("Open");
         doorAnim.SetTrigger("Close");
         isOpen = false;
+        playsound.Play();
     }
 
     public void onInteract(InteractEventArgs args)
