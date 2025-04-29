@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
+using StarterAssets;
 
 
 //Did not manage to figure this out in time, needs to be done later.
@@ -16,6 +17,7 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
 
     public GameObject PauseMenuUI;
+    public FirstPersonController characterController;
 
 
     void Update()
@@ -46,8 +48,9 @@ public class PauseMenu : MonoBehaviour
         PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
+        if (characterController != null) characterController.enabled = true;
     }
 
 
@@ -55,7 +58,9 @@ public class PauseMenu : MonoBehaviour
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        if (characterController != null) characterController.enabled = false;
     }
 
     public void LoadMenu()
