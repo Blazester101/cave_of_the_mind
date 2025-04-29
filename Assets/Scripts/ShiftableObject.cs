@@ -110,10 +110,11 @@ public class ShiftableObject : MonoBehaviour
                 {
                     GetComponent<MeshFilter>().mesh = sevenMesh;
                     Destroy(GetComponent<Collider>());
-                    MeshCollider col = gameObject.AddComponent<MeshCollider>();
-                    col.sharedMesh = sevenMesh;
-                    col.convex = true;
-                    col.enabled = true;
+                    gameObject.AddComponent<BoxCollider>();
+                    //MeshCollider col = gameObject.AddComponent<MeshCollider>();
+                    //col.sharedMesh = sevenMesh;
+                    //col.convex = true;
+                    //col.enabled = true;
                     rendererComponent.material = materials[5];
                 }
                 break;
@@ -121,10 +122,11 @@ public class ShiftableObject : MonoBehaviour
                 {
                     GetComponent<MeshFilter>().mesh = cherriesMesh;
                     Destroy(GetComponent<Collider>());
-                    MeshCollider col = gameObject.AddComponent<MeshCollider>();
-                    col.sharedMesh = cherriesMesh;
-                    col.convex = true;
-                    col.enabled = true;
+                    gameObject.AddComponent<BoxCollider>();
+                    //MeshCollider col = gameObject.AddComponent<MeshCollider>();
+                    //col.sharedMesh = cherriesMesh;
+                    //col.convex = true;
+                    //col.enabled = true;
                     rendererComponent.material = materials[6];
                 }
                 break;
@@ -132,10 +134,11 @@ public class ShiftableObject : MonoBehaviour
                 {
                     GetComponent<MeshFilter>().mesh = diamondMesh;
                     Destroy(GetComponent<Collider>());
-                    MeshCollider col = gameObject.AddComponent<MeshCollider>();
-                    col.sharedMesh = diamondMesh;
-                    col.convex = true;
-                    col.enabled = true;
+                    gameObject.AddComponent<BoxCollider>();
+                    //MeshCollider col = gameObject.AddComponent<MeshCollider>();
+                    //col.sharedMesh = diamondMesh;
+                    //col.convex = true;
+                    //col.enabled = true;
                     rendererComponent.material = materials[7];
                 }
                 break;
